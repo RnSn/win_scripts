@@ -1,0 +1,11 @@
+#! /bin/sh
+logfile="/tmp/zzz_${1}_$(ssh -i /d/q.pem root@$1 hostname).log"
+ssh -i /d/q.pem root@$1 "\
+rm -rf /tmp/zzz_x.tar.gz; \
+echo 'removing metric lines && copy to temp'; \
+time grep -v \".*metrics - type=.*\" /var/log/TADA.log > $logfile; \
+echo 'archiving log'; \
+tar cvfz /tmp/zzz_x.tar.gz $logfile; \
+rm -rf $logfile"
+scp -i /d/q.pem root@$1:/tmp/zzz_x.tar.gz /d/
+tar -xzvf /d/zzz_x.tar.gz -C /d/

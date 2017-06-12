@@ -1,0 +1,10 @@
+#! /bin/sh
+ssh -i /d/q.pem root@$1 "\
+rm -rf /tmp/jsvc_; \
+rm -rf /tmp/jsvc_.tar.gz; \
+mkdir -p /tmp/jsvc_; \
+cp /opt/TADA/logs/jsvc/*.log /tmp/jsvc_; \
+tar cvfz /tmp/jsvc_.tar.gz /tmp/jsvc_/*.log; \
+rm -rf /tmp/jsvc_"
+scp -i /d/q.pem root@$1:/tmp/jsvc_.tar.gz /d/
+tar -xzvf /d/jsvc_.tar.gz /d/

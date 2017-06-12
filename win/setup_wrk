@@ -1,0 +1,10 @@
+#! /bin/sh
+ssh -i /d/q.pem root@$1 "\
+yum -y install unzip gcc; \
+mkdir -p /tmp/wrk; \
+cd /tmp/wrk; \
+wget https://github.com/wg/wrk/archive/master.zip; \
+unzip master.zip; \
+cd wrk-master/; \
+make > /dev/null; \
+./wrk"

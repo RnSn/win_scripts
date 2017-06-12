@@ -1,0 +1,8 @@
+#! /bin/sh
+ssh -i /d/q.pem root@$1 "\
+iptables -I INPUT -p tcp --dport 5432 --syn -j ACCEPT ; service iptables save; \
+sed -i \"s/.*listen_addresses.*/listen_addresses = '\*'/g\" /var/lib/pgsql/9.6/data/postgresql.conf ; \
+sed -i \"s/shared_buffers.*/shared_buffers=1800MB/g\" /var/lib/pgsql/9.6/data/postgresql.conf ; \
+echo \"host    all             all             0.0.0.0/0            trust\" >> /var/lib/pgsql/9.6/data/pg_hba.conf ; \
+service postgresql-9.6 restart ;\
+cat /opt/TADA/zlabmq.settings | grep MC"

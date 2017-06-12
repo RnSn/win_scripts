@@ -1,0 +1,4 @@
+#! /bin/sh
+pid=$2
+ssh -i /d/q.pem root@$1 "su TADA -c 'jstack $pid > /tmp/jstack_$pid.txt'"
+scp -i /d/q.pem root@$1:/tmp/jstack_$pid.txt /d/

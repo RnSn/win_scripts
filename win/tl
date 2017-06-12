@@ -1,0 +1,2 @@
+#! /bin/sh
+ssh -i /d/q.pem $1 "tail -f /var/log/TADA.log | grep -v 'metric'"

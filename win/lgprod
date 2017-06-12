@@ -1,0 +1,12 @@
+#! /bin/sh
+logfile="/tmp/zzz_${1}_$(ssh -o StrictHostKeyChecking=no -i /d/pems/CloudServices.pem $2@$1 hostname).log"
+ssh -o StrictHostKeyChecking=no -i /d/pems/CloudServices.pem $2@$1 "\
+sudo rm -rf /tmp/zzz_x.tar.gz; \
+echo 'removing metric lines && copy to temp'; \
+time grep -v \".*metrics - type=.*\" /var/log/TADA.log > $logfile; \
+echo 'archiving log'; \
+sudo tar cvfz /tmp/zzz_x.tar.gz $logfile; \
+sudo rm -rf $logfile; \
+sudo chown $2 /tmp/zzz_x.tar.gz"
+scp -o StrictHostKeyChecking=no -i /d/pems/CloudServices.pem $2@$1:/tmp/zzz_x.tar.gz /d/
+tar -xzvf /d/zzz_x.tar.gz -C /d/

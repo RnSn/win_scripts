@@ -1,0 +1,2 @@
+#! /bin/sh
+mvn -f C:/WS/server/$1/pom.xml -offline compile -DskipTests

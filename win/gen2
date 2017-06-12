@@ -1,0 +1,6 @@
+#! /bin/sh
+SERVER_IP=$1
+scp -i /d/q.pem /c/WS/server/database/target/database-0.0.1-SNAPSHOT.jar root@$SERVER_IP:/opt/TADA/TADA-db-cli.jar
+ssh -o StrictHostKeyChecking=no -i /d/q.pem root@$SERVER_IP "rm -rf /tmp/*.sql; su TADA -c 'cd /tmp; java -jar -DSETTINGS=/opt/TADA/zlabmq.settings /opt/TADA/TADA-db-cli.jar -s TADA \"\" upgrade_global.sql upgrade_customer.sql add_customer.sql'"
+scp -i /d/q.pem root@$SERVER_IP:/tmp/*.sql /d/
+

@@ -1,0 +1,8 @@
+#! /bin/sh
+TADA_HOST="dev-single"$1
+ssh -i /d/q.pem root@jenkins "\
+echo \"Revering instance $TADA_HOST to base ... \" ; \
+salt-cloud -a revert_to_snapshot $TADA_HOST snapshot_name=\"base\" -y ; \
+sleep 5 ; \
+echo \"Starting instance $TADA_HOST ... \" ; \
+salt-cloud -a start $TADA_HOST -y"

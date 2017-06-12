@@ -1,0 +1,21 @@
+#! /bin/sh;
+ssh -i /d/q.pem root@jenkins "\
+export SERVER_VERSION=5.1.13; \
+export BUILD_NUMBER=1455; \
+export COMMIT_HASH=2eca3e34d58450074266a875900c034e51fec8a0; \
+export BUILD_DATE=2017-04-17; \
+export BUILD_TIME=20:02:38.282786664; \
+export SERVER_BRANCH=origin/release-5.1; \
+export PATCH_DIR=/var/lib/jenkins/workspace/DEV-SERVER-CodeBuild_vertica_5.1/patches/files; \
+export RELEASE_VERSION=5.1.12; \
+export RELEASE_BUILD=1434; \
+export FEATURE_BRANCH=origin-release-5.1; \
+export FEATURE_DATE=20170417; \
+export PATCH_BASE_FOLDER=20170417-origin-release-5_1-5_1_13_1455; \
+export PATCH_FILES_FOLDER=20170417-origin-release-5.1/files; \
+export FINAL_PATCH=1434-1455; \
+export SERVER_IP=10.0.60.24; \
+export TADA_HOST=release-pipe; \
+salt $TADA_HOST -t 1200 state.sls server_patches.$PATCH_BASE_FOLDER.$(echo $FINAL_PATCH|sed 's/\.sls//') > /tmp/latest_patch.txt"
+scp -i /d/q.pem root@jenkins:/tmp/latest_patch.txt /d/
+

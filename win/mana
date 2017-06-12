@@ -1,0 +1,2 @@
+#! /bin/sh
+mvn -f C:/WS/server/$1/pom.xml -DignoreNonCompile=true org.apache.maven.plugins:maven-dependency-plugin:3.0.0:analyze-report

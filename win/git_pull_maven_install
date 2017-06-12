@@ -1,0 +1,5 @@
+#! /bin/sh
+cd C:/WS/server
+git checkout release-5.2 > c:/tmp/gitpull.log
+git pull >> c:/tmp/gitpull.log
+mvn -f C:/WS/server/pom.xml install -DskipTests > c:/tmp/build.log

@@ -1,0 +1,2 @@
+#! /bin/sh
+scp -i /d/q.pem root@$1:/opt/TADA/jetty/webapps/$2.war $3
