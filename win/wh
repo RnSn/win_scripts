@@ -1,0 +1,5 @@
+#! /bin/sh
+cd C:/WS/server/warehouse-service
+pwd
+export MAVEN_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
+mvn -f C:/WS/server/warehouse-service/pom.xml -DTADA_LOG_CONSOLE -DSETTINGS=C:/WS/server/deployment/zip/TADA/zlabmq2.settings -Dmaven.multiModuleProjectDirectory=C:/WS/server/warehouse-service spring-boot:run -DskipTests
