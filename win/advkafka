@@ -1,4 +1,4 @@
 #! /bin/sh
 ssh -i /d/q.pem root@$1 "\
-sed -i \"s/advertised\.listeners.*/advertised\.listeners=PLAINTEXT:\/\/$1:9092/g\" /opt/TADA/kafka/config/server.properties ; \
-service TADA restart kafka"
+sed -i \"s/advertised\.listeners.*/advertised\.listeners=PLAINTEXT:\/\/$1:9092/g\" /opt/ttt/kafka/config/server.properties ; \
+service ttt restart kafka"

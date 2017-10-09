@@ -1,3 +1,3 @@
 c:\progs\kafka_2.11-0.10.1.1\bin\windows\kafka-topics.bat --create --topic IPFIX --zookeeper localhost:2181 --partitions 8 --replication 1
 c:\progs\kafka_2.11-0.10.1.1\bin\windows\kafka-topics.bat --create --topic EVENTS --zookeeper localhost:2181 --partitions 1 --replication 1
-c:\progs\kafka_2.11-0.10.1.1\bin\windows\kafka-topics.bat --create --topic TADA.CONTROL --zookeeper localhost:2181 --partitions 64 --replication 1 --config retention.ms=5184000000
+c:\progs\kafka_2.11-0.10.1.1\bin\windows\kafka-topics.bat --create --topic ttt.CONTROL --zookeeper localhost:2181 --partitions 64 --replication 1 --config retention.ms=5184000000

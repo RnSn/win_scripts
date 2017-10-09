@@ -1,5 +1,5 @@
 #! /bin/sh
 pid=$2
 user=$3
-ssh -i /d/pems/CloudServices.pem $user@$1 "sudo -u TADA jstack $pid > /tmp/jstack_$pid.txt"
-scp -i /d/pems/CloudServices.pem $user@$1:/tmp/jstack_$pid.txt /d/jstack_$1_$pid.txt
+ssh -i ~/.ssh/c.pem $user@$1 "sudo -u ttt jstack $pid > /tmp/jstack_$pid.txt"
+scp -i ~/.ssh/c.pem $user@$1:/tmp/jstack_$pid.txt /d/jstack_$1_$pid.txt

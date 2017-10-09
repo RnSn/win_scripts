@@ -1,0 +1,2 @@
+#! /bin/sh
+mvn -f C:/WS/5.2/server/pom.xml -T 1C -am -offline install -pl $1 -DskipTests

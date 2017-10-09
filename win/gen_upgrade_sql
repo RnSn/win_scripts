@@ -1,7 +1,7 @@
 #! /bin/sh
 SERVER_IP=$1
-scp -i /d/q.pem root@deploy:/opt/TADA/TADA-db-cli.jar /d/
-scp -i /d/q.pem /d/TADA-db-cli.jar root@$SERVER_IP:/opt/TADA/
-ssh -o StrictHostKeyChecking=no -i /d/q.pem root@$SERVER_IP "rm -rf /tmp/*.sql; su TADA -c 'cd /tmp; java -jar -DSETTINGS=/opt/TADA/zlabmq.settings /opt/TADA/TADA-db-cli.jar -s TADA \"\" upgrade_global.sql upgrade_customer.sql add_customer.sql'"
+scp -i /d/q.pem root@deploy:/opt/ttt/ttt-db-cli.jar /d/
+scp -i /d/q.pem /d/ttt-db-cli.jar root@$SERVER_IP:/opt/ttt/
+ssh -o StrictHostKeyChecking=no -i /d/q.pem root@$SERVER_IP "rm -rf /tmp/*.sql; su ttt -c 'cd /tmp; java -jar -DSETTINGS=/opt/ttt/zlabmq.settings /opt/ttt/ttt-db-cli.jar -s ttt \"\" upgrade_global.sql upgrade_customer.sql add_customer.sql'"
 scp -i /d/q.pem root@$SERVER_IP:/tmp/*.sql /d/
 

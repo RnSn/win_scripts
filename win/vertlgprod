@@ -1,0 +1,12 @@
+#! /bin/sh
+archive=/tmp/v.tar.gz
+logfile="/tmp/vert_${1}_$(ssh -o StrictHostKeyChecking=no -i ~/.ssh/c.pem dbadmin@$1 hostname).log"
+ssh -o StrictHostKeyChecking=no -i ~/.ssh/c.pem dbadmin@$1 "\
+rm -rf /tmp/v.tar.gz; \
+echo 'copy to temp'; \
+cp /data/ttt/v_ttt_node000$2_catalog/vertica.log $logfile; \
+echo 'archiving log'; \
+tar cvfz /tmp/v.tar.gz $logfile; \
+rm -rf $logfile"
+scp -o StrictHostKeyChecking=no -i ~/.ssh/c.pem dbadmin@$1:$archive /d/
+tar -xzvf /d/v.tar.gz -C /d/

@@ -2,4 +2,4 @@
 cd C:/WS/server/console
 pwd
 export MAVEN_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5003"
-mvn -f C:/WS/server/console/pom.xml -DTADA_LOG_CONSOLE -DSETTINGS=C:/WS/server/deployment/zip/TADA/zlabmq2.settings -Dmaven.multiModuleProjectDirectory=C:/WS/server/console spring-boot:run -DskipTests
+mvn -f C:/WS/server/console/pom.xml -Dttt_LOG_CONSOLE -DSETTINGS=C:/WS/server/deployment/zip/ttt/zlabmq2.settings -Dmaven.multiModuleProjectDirectory=C:/WS/server/console spring-boot:run -DskipTests

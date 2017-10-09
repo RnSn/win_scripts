@@ -1,5 +1,5 @@
 #! /bin/sh
-scp -o StrictHostKeyChecking=no /d/asdf/upgrade_customer.sql root@vert:/opt/TADA/resources/liquibase-scripts/
-scp -o StrictHostKeyChecking=no /d/asdf/upgrade_global.sql root@vert:/opt/TADA/resources/liquibase-scripts/
-#ssh -o StrictHostKeyChecking=no root@vert "su TADA -c 'cd /opt/TADA; java -DSETTINGS=./zlabmq.settings -jar TADA-db-cli.jar -q ./resources/liquibase-scripts/custom_script.sql'"
-ssh -o StrictHostKeyChecking=no root@vert "su TADA -c 'cd /opt/TADA; java -Xss100m -DSETTINGS=./zlabmq.settings -jar TADA-db-cli.jar -f ./resources/liquibase-scripts/upgrade_global.sql ./resources/liquibase-scripts/upgrade_customer.sql'"
+scp -o StrictHostKeyChecking=no /d/asdf/upgrade_customer.sql root@vert:/opt/ttt/resources/liquibase-scripts/
+scp -o StrictHostKeyChecking=no /d/asdf/upgrade_global.sql root@vert:/opt/ttt/resources/liquibase-scripts/
+#ssh -o StrictHostKeyChecking=no root@vert "su ttt -c 'cd /opt/ttt; java -DSETTINGS=./zlabmq.settings -jar ttt-db-cli.jar -q ./resources/liquibase-scripts/custom_script.sql'"
+ssh -o StrictHostKeyChecking=no root@vert "su ttt -c 'cd /opt/ttt; java -Xss100m -DSETTINGS=./zlabmq.settings -jar ttt-db-cli.jar -f ./resources/liquibase-scripts/upgrade_global.sql ./resources/liquibase-scripts/upgrade_customer.sql'"

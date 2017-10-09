@@ -14,3 +14,6 @@ sudo rm -rf $logfile; \
 sudo chown $2:$2 /tmp/zzz_x.tar.gz"
 scp -o StrictHostKeyChecking=no -i ~/.ssh/c.pem $2@$1:/tmp/zzz_x.tar.gz /d/
 tar -xzvf /d/zzz_x.tar.gz -C /d/
+today=$(date +%-d)
+echo "Selecting today's log, day: $today"
+grep -A 1000000000 "$today 00:" /d/$logfile > /d/tmp/_today_$1.log

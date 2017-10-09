@@ -1,0 +1,6 @@
+#! /bin/sh
+echo "Recreating vertica at ip $1"
+ssh root@$1 "\
+sudo -u dbadmin /opt/vertica/bin/admintools -t stop_db --force -d ttt -p ttt; \
+sudo -u dbadmin /opt/vertica/bin/admintools -t drop_db -d ttt; \
+sudo -u dbadmin /opt/vertica/bin/admintools -t create_db -d ttt -p ttt -s $1"

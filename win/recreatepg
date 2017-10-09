@@ -1,0 +1,2 @@
+dropdb -U ttt
+createdb -U ttt -O ttt
