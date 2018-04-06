@@ -1,0 +1,1 @@
+d:\games\l4d2ds\srcds.exe  -console -game left4dead2 +map c3m2

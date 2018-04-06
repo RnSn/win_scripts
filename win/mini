@@ -1,0 +1,2 @@
+#! /bin/sh
+time mvn -q -f C:/WS/5.2/server/console/pom.xml process-resources com.samaxes.maven:minify-maven-plugin:1.7.6:minify > /d/mini.txt

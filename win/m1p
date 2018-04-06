@@ -1,0 +1,2 @@
+#! /bin/sh
+mvn -f C:/WS/5.2/server/pom.xml -T 1C package -pl $1 -DskipTests

@@ -1,2 +1,2 @@
 #! /bin/sh
-ssh -i /d/q.pem root@$1 "cat /opt/ttt/zlabmq.settings | grep -E \"MC|LAND\""
+ssh -i /d/q.pem $1 "sudo cat /opt/ttt/zlabmq.settings | grep -E \"^MC.*PASSWORD=|^LAND.*PASS\""

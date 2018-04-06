@@ -1,2 +1,2 @@
-dropdb -U ttt
-createdb -U ttt -O ttt
+dropdb -U ttt ttt
+createdb -U ttt -O ttt ttt

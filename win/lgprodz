@@ -9,7 +9,5 @@ scp -o StrictHostKeyChecking=no -i ~/.ssh/c.pem $2@$1:/tmp/zzz_x.gz /d/
 echo "unzipping"
 gzip -d -c /d/zzz_x.gz > /d/tmp/ttt.log
 echo "removing metrics"
-time grep -v -e ".*metrics - type=.*" -e ".*metrics-logger.*" -e ".*\.HealthMonitor.*" -e ".*NoSqlSession.*" /d/tmp/ttt.log > /d/tmp/ttt_$1.log;
-echo 'trimming exeptions';
-time sed -i "/.* #011at/ s//\t#at/g" /d/tmp/ttt_$1.log;
+time grep -v -e ".*metrics - type=.*" -e ".*metrics-logger.*" -e ".*NoSqlSession.*" /d/tmp/ttt.log > /d/tmp/ttt_$1.log;
 rm -rvf /d/tmp/ttt.log

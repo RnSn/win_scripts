@@ -1,0 +1,18 @@
+#! /bin/sh
+USER_NAME="$2"
+if [ -z "$USER_NAME" ]; then
+  USER_NAME="centos"
+fi
+echo "User name $USER_NAME"
+logfile="/tmp/err_${1}_$(ssh -o StrictHostKeyChecking=no -i ~/.ssh/c.pem $USER_NAME@$1 hostname).log"
+ssh -o StrictHostKeyChecking=no -i ~/.ssh/c.pem $USER_NAME@$1 "\
+sudo rm -rf /tmp/z_x.tar.gz; \
+echo 'Selecting errors from ttt.log && copy to temp'; \
+time sudo grep -B 5 -A 100 \" ERROR \" /var/log/ttt.log > $logfile; \
+echo ; \
+echo 'archiving log'; \
+sudo tar cvfz /tmp/z_x.tar.gz $logfile; \
+sudo rm -rf $logfile; \
+sudo chown $2:$2 /tmp/z_x.tar.gz"
+scp -o StrictHostKeyChecking=no -i ~/.ssh/c.pem $USER_NAME@$1:/tmp/z_x.tar.gz /d/
+tar -xzvf /d/z_x.tar.gz -C /d/

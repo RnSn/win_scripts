@@ -1,8 +1,10 @@
 #! /bin/sh
-ttt_HOST="dev-single"$1
+ZIFTEN_HOST="dev-single"$1
 ssh -i /d/q.pem root@jenkins "\
-echo \"Revering instance $ttt_HOST to base ... \" ; \
-salt-cloud -a revert_to_snapshot $ttt_HOST snapshot_name=\"base\" -y ; \
+echo \"Revering instance $ZIFTEN_HOST to base ... \" ; \
+salt-cloud -a revert_to_snapshot $ZIFTEN_HOST snapshot_name=\"base\" -y ; \
 sleep 5 ; \
-echo \"Starting instance $ttt_HOST ... \" ; \
-salt-cloud -a start $ttt_HOST -y"
+echo \"Starting instance $ZIFTEN_HOST ... \" ; \
+salt-cloud -a start $ZIFTEN_HOST -y; \
+sleep 60; \
+salt $ZIFTEN_HOST cmd.run \"rm -rvf /root/.inuse\""

@@ -1,0 +1,2 @@
+#! /bin/sh
+grep -B 10 -A 50 "#at" $1 > $1.err.log

@@ -1,16 +1,8 @@
 #! /bin/sh
 logfile="/tmp/zzz_${1}_$(ssh -o StrictHostKeyChecking=no -i ~/.ssh/c.pem $2@$1 hostname).log"
-day=$(date +%-d)
-month=$(date +%-b)
-echo "Selecting today's log, $month $day"
 ssh -o StrictHostKeyChecking=no -i ~/.ssh/c.pem $2@$1 "\
 sudo rm -rf /tmp/zzz_x.tar.gz; \
-echo 'removing metric lines && copy to temp'; \
-time sudo grep -A 100000000 -E \"^$month [ ]?$day \" /var/log/ttt.log | grep -v -e \".*metrics - type=.*\" -e \".*metrics-logger.*\" -e \".*\.NoSqlSession.*\"  > $logfile; \
-echo ; \
-echo 'trimming exeptions'; \
-time sed -i \"/.* #011at/ s//\t#at/g\" $logfile; \
-echo ; \
+sudo cp /var/log/ttt.log $logfile; \
 echo 'archiving log'; \
 sudo tar cvfz /tmp/zzz_x.tar.gz $logfile; \
 sudo rm -rf $logfile; \

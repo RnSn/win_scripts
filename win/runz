@@ -1,0 +1,3 @@
+#! /bin/sh
+echo "Starting $1"
+java -DZIFTEN_LOG_CONSOLE -DSETTINGS=C:/WS/5.2/server/__misc/conf/zlabmq2.settings -jar c:/WS/5.2/server/$1/target/$1.jar

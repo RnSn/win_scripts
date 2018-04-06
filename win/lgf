@@ -2,8 +2,7 @@
 logfile="/tmp/zzz_${1}_$(ssh -i /d/q.pem root@$1 hostname).log"
 ssh -i /d/q.pem root@$1 "\
 rm -rf /tmp/zzz_x.tar.gz; \
-echo 'removing metric lines && copy to temp'; \
-time sudo grep -v -e \".*metrics - type=.*\" -e \".*metrics-logger.*\" -e \".*\.NoSqlSession.*\" /var/log/ttt.log > $logfile; \
+cp /var/log/ttt.log $logfile; \
 echo 'trimming exeptions'; \
 time sed -i \"/.* #011at/ s//\t#at/g\" $logfile; \
 echo 'archiving log'; \

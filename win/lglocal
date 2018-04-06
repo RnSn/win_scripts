@@ -1,13 +1,13 @@
 #! /bin/sh
-logfile="/tmp/zzz_${1}_$(ssh -i /d/q.pem root@$1 hostname).log"
-ssh -i /d/q.pem root@$1 "\
+logfile="/tmp/zzz_${1}_$(ssh $1 hostname).log"
+ssh $1 "\
 rm -rf /tmp/zzz_x.tar.gz; \
 echo 'removing metric lines && copy to temp'; \
-time sudo grep -v -e \".*metrics - type=.*\" -e \".*metrics-logger.*\" -e \".*\.NoSqlSession.*\" /var/log/ttt.log > $logfile; \
+time sudo grep -v -e \".*metrics - type=.*\" -e \".*metrics-logger.*\" -e \".*\.HealthMonitor.*\" -e \".*\.NoSqlSession.*\" /var/log/ttt.log > $logfile; \
 echo 'trimming exeptions'; \
 time sed -i \"/.* #011at/ s//\t#at/g\" $logfile; \
 echo 'archiving log'; \
 tar cvfz /tmp/zzz_x.tar.gz $logfile; \
 rm -rf $logfile"
-scp -i /d/q.pem root@$1:/tmp/zzz_x.tar.gz /d/
+scp $1:/tmp/zzz_x.tar.gz /d/
 tar -xzvf /d/zzz_x.tar.gz -C /d/

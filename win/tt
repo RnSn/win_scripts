@@ -1,5 +1,2 @@
 #! /bin/sh
-cd C:/WS/server/tenant/tenant-service
-pwd
-export MAVEN_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5004"
-mvn -f C:/WS/server/tenant/tenant-service/pom.xml -Dttt_LOG_CONSOLE -DSETTINGS=C:/WS/server/deployment/zip/ttt/zlabmq2.settings -Dmaven.multiModuleProjectDirectory=C:/WS/server/tenant/tenant-service spring-boot:run -DskipTests
+java -DZIFTEN_LOG_CONSOLE -DSETTINGS=C:/WS/5.2/server/__misc/conf/zlabmq2.settings -jar c:/WS/5.2/server/tenant/tenant-service/target/tenant-service.jar

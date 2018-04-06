@@ -2,4 +2,4 @@
 cd C:/WS/server/binaryfile-service
 pwd
 export MAVEN_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5001"
-mvn -f C:/WS/server/binaryfile-service/pom.xml -Dttt_LOG_CONSOLE -DSETTINGS=C:/WS/server/deployment/zip/ttt/zlabmq2.settings -Dmaven.multiModuleProjectDirectory=C:/WS/server/binaryfile-service spring-boot:run -DskipTests
+mvn -f C:/WS/server/binaryfile-service/pom.xml -DZIFTEN_LOG_CONSOLE -DSETTINGS=C:/WS/server/deployment/zip/ttt/zlabmq2.settings -Dmaven.multiModuleProjectDirectory=C:/WS/server/binaryfile-service spring-boot:run -DskipTests

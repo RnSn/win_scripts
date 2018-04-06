@@ -1,0 +1,8 @@
+#! /bin/sh
+user=$2
+app=$3
+pid=$4
+file="/tmp/jstack_$app_$pid.txt"
+
+ssh $1 "sudo su; su ttt -c 'jstack $pid > $file'"
+scp $1:$file /d/
