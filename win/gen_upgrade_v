@@ -2,6 +2,6 @@
 SERVER_IP=$1
 m1 database/database-warehouse
 scp -i ~/.ssh/q.pem /c/WS/5.2/server/database/database-warehouse/target/ttt-whdb-cli.jar root@$SERVER_IP:/opt/ttt/lib
-ssh -o StrictHostKeyChecking=no -i /d/q.pem root@$SERVER_IP "rm -rf /tmp/*.sql; cd /tmp; java -jar -DSETTINGS=/opt/ttt/zlabmq.settings /opt/ttt/lib/ttt-whdb-cli.jar -s ttt \"\" vertica_upgrade_global.sql vertica_upgrade_customer.sql vertica_add_customer.sql"
-scp -i ~/.ssh/q.pem root@$SERVER_IP:/tmp/*.sql /d/
+ssh -o StrictHostKeyChecking=no -i /d/q.pem root@$SERVER_IP "rm -rf /tmp/*_x.sql; cd /tmp; java -jar -DSETTINGS=/opt/ttt/zlabmq.settings /opt/ttt/lib/ttt-whdb-cli.jar -s ttt \"\" vertica_upgrade_global_x.sql vertica_upgrade_customer_x.sql vertica_add_customer_x.sql"
+scp -i ~/.ssh/q.pem root@$SERVER_IP:/tmp/*_x.sql /d/
 
